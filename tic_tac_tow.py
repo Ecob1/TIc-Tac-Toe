@@ -1,1 +1,1 @@
- var a + 1   ddd
+print('Hello World!')
