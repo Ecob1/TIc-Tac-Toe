@@ -1,6 +1,6 @@
 '''
 Tic-Tac-Toe: A Solution
-Author: Bro. Manley
+Author: Bro. Manley    
 '''
 
 def main():
