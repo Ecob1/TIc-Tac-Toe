@@ -57,7 +57,7 @@ def coordinates(user_input):
 
 while True:
     print_board(board)
-    user_input = input("Please enter a position 1 through 9 or enter \'q'\ to quit:")
+    user_input = input('Please enter a position 1 through 9 or enter \"q"\ to quit:')
     if quit(user_input): break
     if not check_input(user_input):
         print("Please try again")
