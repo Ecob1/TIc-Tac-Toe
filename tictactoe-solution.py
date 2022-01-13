@@ -49,7 +49,7 @@ def make_move(player, board):
     board[square - 1] = player
 
 def next_player(current):
-    if current == "" or current == "o":
+    if current == "" or current == "o": 
         return "x"
     elif current == "x":
         return "o"
