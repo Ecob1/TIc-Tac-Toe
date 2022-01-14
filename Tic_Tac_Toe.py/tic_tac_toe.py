@@ -4,6 +4,10 @@ board= [
     ["_", "_", "_"]
 ]
 
+# To check when it's true refering to "x", otherwise will be "o"
+user = True
+
+
 # This function will create the board
 def main(board):
     for row in board:
@@ -56,9 +60,32 @@ def coordinates(user_input):
     col = user_input
     if col > 2: col = int(col % 3)
     return (row,col)
-    
+
+def addToBoard(coords, board, active_user):
+    row = coords[0]
+    col = coords[1]
+    board[row][col] = active_user
+
+
+def current_user(user):
+    if user: return "x"
+    else: return "o"
+
+def isWing(user, board):
+    if check_row(user, board): return True
+
+def check_row(user, board):
+    for row in board:
+        complete_row = True
+        for slot in row:
+            if slot != user:
+                complete_row = False
+                break
+        if complete_row: return True
+    return False   
 
 while True:
+    active_user = current_user(user)
     main(board)
     user_input = input('Please enter a position 1 through 9 or enter \"q"\ to quit: ')
     if user_quit(user_input): break
@@ -67,11 +94,17 @@ while True:
         continue
     user_input = int(user_input) -1
     coords = coordinates(user_input)
-    board[0][0] = "x"
+    # board[0][0] = "x"
     if istaken(coords, board):
         print("Please try again.")
         continue 
-    
+    addToBoard(coords, board, active_user)
+    if isWing(active_user, board):
+        print(f"{active_user.upper()} won!")
+        break
+
+    user = not user
+
 if __name__ == "__main__":
     main()
 
